@@ -1,5 +1,13 @@
 
 function randomArray(len, min, max) {
+
+  if(len<0){
+    throw new Error("len can't less 0")
+  }
+  if (min > max) {
+    throw new Error("min can't less max")
+  }
+
   let arrs = []
 
   for (let i = 0; i < len; i++) {
