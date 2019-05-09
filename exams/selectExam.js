@@ -1,14 +1,12 @@
 const utils = require('../utils')
 const selectSort = require('../src/select-sort')
 
-const {randomArray} =utils
+const {randomArray, testSortTime} =utils
 
-const arrs = randomArray(10, 10, 1000)
+const arrs = randomArray(100000, 10, 1000)
 
 // 从小到大
-selectSort(arrs)
-console.log(arrs)
+// testSortTime("select sort", selectSort, arrs)
 
 // 从大到小
-selectSort(arrs,(a,b)=>a>b)
-console.log(arrs)
+testSortTime("select sort", selectSort, arrs, (a,b)=>a>b)
