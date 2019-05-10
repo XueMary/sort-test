@@ -17,6 +17,15 @@ function randomArray(len, min, max) {
 
   return arrs;
 }
+function orderlyArray(len) {
+  let arrs = []
+
+  for (let i = 0; i < len; i++) {
+    arrs.push(i)
+  }
+
+  return arrs;
+}
 
 function sortRule(a, b) {
   return a < b
@@ -51,5 +60,6 @@ function isSort(arrs,sortRule){
 module.exports = {
   randomArray,
   sortRule,
-  testSortTime
+  testSortTime,
+  orderlyArray
 }
