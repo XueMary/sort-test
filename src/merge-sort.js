@@ -1,6 +1,6 @@
 
 const { sortRule } = require('../utils')
-const {insertSorts} = require('./insert-sort')
+const { insertSorts } = require('./insert-sort')
 
 // 合并
 function __merge(arrs, l, mid, r, sort) {
@@ -34,8 +34,8 @@ function __merge(arrs, l, mid, r, sort) {
 
 // 递归拆分
 function __mergeSort(arrs, l, r, sort = sortRule) {
-  
-  if(r-l<=15){
+
+  if (r - l <= 12) {
     insertSorts(arrs, l, r, sort)
     return
   }
@@ -44,8 +44,8 @@ function __mergeSort(arrs, l, r, sort = sortRule) {
 
   __mergeSort(arrs, l, mid, sort)
   __mergeSort(arrs, mid + 1, r, sort)
-  
-  if (arrs[mid] > arrs[mid + 1]) {
+
+  if ( sort(arrs[mid + 1],arrs[mid])) {
     __merge(arrs, l, mid, r, sort)
   }
 }
@@ -55,5 +55,25 @@ function mergeSort(arrs, sort) {
   __mergeSort(arrs, 0, r, sort)
 }
 
+function mergeSortBU(arrs, sort = sortRule) {
+  let len = arrs.length
+  // 假设一次比较size个原生，i为起点,size每次merge后都是原来的2倍
+  // 得：
+  for (let size = 1; size <= len; size += size) {
+    for (let i = 0; i + size < len; i += size + size) {
+      let mid = i + size - 1
+      let r = Math.min(mid+size, len-1)
 
-module.exports = mergeSort
+      if(sort(arrs[mid+1],arrs[mid])){
+        if (r - i <= 12) {
+          insertSorts(arrs, i, r, sort)
+        }
+        else{__merge(arrs, i, mid, r, sort)}
+      }
+    }
+  }
+
+}
+
+
+module.exports = { mergeSort, mergeSortBU }

@@ -20,7 +20,6 @@ function insertSort(arrs, sort = sortRule) {
 }
 
 function insertSorts(arrs, l, r, sort = sortRule) {
-  const len = arrs.length
 
   for (let i = l+1; i <= r; i++) {
 

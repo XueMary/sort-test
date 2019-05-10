@@ -3,7 +3,7 @@ const {insertSort} = require('../src/insert-sort')
 const selectSort = require('../src/select-sort')
 const bubSort = require('../src/bub-sort')
 const shellSort = require('../src/shell-sort')
-const mergeSort = require('../src/merge-sort')
+const {mergeSort, mergeSortBU} = require('../src/merge-sort')
 
 const {randomArray, testSortTime} =utils
 
@@ -29,3 +29,6 @@ testSortTime("shell sort", shellSort, arrs)
 
 arrs = randomArray(n, 10, n)
 testSortTime("merge sort", mergeSort, arrs)
+
+arrs = randomArray(n, 10, n)
+testSortTime("merge sort", mergeSortBU, arrs)
