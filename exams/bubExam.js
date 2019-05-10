@@ -1,5 +1,5 @@
 const utils = require('../utils')
-const insertSort = require('../src/insert-sort')
+const {insertSort} = require('../src/insert-sort')
 const selectSort = require('../src/select-sort')
 const bubSort = require('../src/bub-sort')
 
