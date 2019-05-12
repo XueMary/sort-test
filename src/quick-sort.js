@@ -14,9 +14,9 @@ function _quickSort(arrs, l, r, sort) {
     return
   }
 
-  let p = _partition(arrs, l, r, sort)
-  _quickSort(arrs, l, p - 1, sort)
-  _quickSort(arrs, p + 1, r, sort)
+  let {lt, gt} = _partition(arrs, l, r, sort)
+  _quickSort(arrs, l, lt, sort)
+  _quickSort(arrs, gt, r, sort)
 
 }
 
@@ -29,20 +29,27 @@ function _partition(arrs, l, r, sort) {
 
   let v = arrs[l]
 
-  // arrs[l...i) <=v; arrs(j...r] >=v;
-  let i = l + 1, j = r;
-
-  while (true) {
-    while (i <= r && sort(arrs[i], v)) i++
-    while (j >= l && sort(v, arrs[j])) j--
-    if (i > j) break
-    [arrs[j], arrs[i]] = [arrs[i], arrs[j]]
-    i++
-    j--
+  // arrs[l...lt] < v; arrs[lt+1, .... gt-1] = v; arrs[gt, r] >v;
+  let i = l+1; // 下标
+  let lt = l, gt = r+1;
+  
+  while(i<gt){
+    if(arrs[i]<v){
+      lt++  
+      [arrs[lt], arrs[i]] = [arrs[i], arrs[lt]]
+      i++
+    }
+    else if(arrs[i]=v){
+      i++
+    }
+    else if(arrs[i]>v){
+      gt-- 
+      [arrs[gt], arrs[i]] = [arrs[i], arrs[gt]]
+    }
   }
 
-  [arrs[j], arrs[l]] = [arrs[l], arrs[j]]
+  [arrs[lt], arrs[l]] = [arrs[l], arrs[lt]]
 
-  return j
+  return {lt,gt}
 }
 module.exports = quickSort
