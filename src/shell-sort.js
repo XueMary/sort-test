@@ -12,7 +12,7 @@ function shellSort(array, sort = sortRule) {
       let e = array[i]
       let j;
       for (j = i; j > 0; j-=gap) {
-        if(sort(e,array[j-gap])){
+        if(array[j-gap] && sort(e,array[j-gap])){
           array[j] = array[j-gap]
         }else{
           break

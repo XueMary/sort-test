@@ -11,8 +11,8 @@ function randomArray(len, min, max) {
   let arrs = []
 
   for (let i = 0; i < len; i++) {
-    const random = Math.floor(Math.random() * (max - min)) + min
-    arrs.push(random)
+    const random = (Math.random() * (max - min)).toFixed(2) + min
+    arrs.push({value:random})
   }
 
   return arrs;
