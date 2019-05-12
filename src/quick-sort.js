@@ -34,7 +34,7 @@ function _partition(arrs, l, r, sort) {
   let lt = l, gt = r+1;
   
   while(i<gt){
-    if(arrs[i]<v){
+    if(sort(arrs[i],v)){
       lt++  
       [arrs[lt], arrs[i]] = [arrs[i], arrs[lt]]
       i++
@@ -42,7 +42,7 @@ function _partition(arrs, l, r, sort) {
     else if(arrs[i]=v){
       i++
     }
-    else if(arrs[i]>v){
+    else if(sort(v,arrs[i])){
       gt-- 
       [arrs[gt], arrs[i]] = [arrs[i], arrs[gt]]
     }
