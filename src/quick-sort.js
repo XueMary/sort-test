@@ -9,7 +9,7 @@ function quickSort(arrs, sort = sortRule) {
 
 function _quickSort(arrs, l, r, sort) {
 
-  if (r-l<=10) {
+  if (r - l <= 10) {
     insertSorts(arrs, l, r, sort)
     return
   }
@@ -21,23 +21,28 @@ function _quickSort(arrs, l, r, sort) {
 }
 
 function _partition(arrs, l, r, sort) {
-  let p = Math.floor(Math.random() * (r - l) + l)
-  let j = l, i = l + 1;
+  let random = Math.floor(Math.random() * (r - l) + l)
 
-  [arrs[p], arrs[j]] = [arrs[j], arrs[p]]
-  p = j
+  let lv = arrs[l]
+  arrs[l] = arrs[random]
+  arrs[random] = lv
 
-  for (; i <= r; i++) {
-    if (sort(arrs[i], arrs[p])) {
-      j++
-      [arrs[i], arrs[j]] = [arrs[j], arrs[i]]
-    }
+  let v = arrs[l]
+
+  // arrs[l...i) <=v; arrs(j...r] >=v;
+  let i = l + 1, j = r;
+
+  while (true) {
+    while (i <= r && sort(arrs[i], v)) i++
+    while (j >= l && sort(v, arrs[j])) j--
+    if (i > j) break
+    [arrs[j], arrs[i]] = [arrs[i], arrs[j]]
+    i++
+    j--
   }
 
-  [arrs[p], arrs[j]] = [arrs[j], arrs[p]]
-  p = j
+  [arrs[j], arrs[l]] = [arrs[l], arrs[j]]
 
-  return p
+  return j
 }
-
 module.exports = quickSort
