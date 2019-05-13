@@ -1,6 +1,6 @@
-const {MaxHeap} = require('../src/heap')
+const Heap = require('../src/heap')
 
-const heap = new MaxHeap()
+const heap = new Heap()
 console.log(heap.size())
 console.log(heap.isEmpty())
 heap.insert(9)

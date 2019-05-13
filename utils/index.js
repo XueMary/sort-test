@@ -12,7 +12,8 @@ function randomArray(len, min, max) {
 
   for (let i = 0; i < len; i++) {
     const random = (Math.random() * (max - min)).toFixed(2) + min
-    arrs.push({value:random})
+    // console.log(parseFloat(random))
+    arrs.push(random)
   }
 
   return arrs;
@@ -35,7 +36,6 @@ function testSortTime (sortName, sort, arrs, sortRule) {
   const start = new Date().getTime()
   sort(arrs, sortRule)
   const end = new Date().getTime()
-
   if(isSort(arrs, sortRule)){
     console.log(`${sortName} consume time ${(end-start)/1000} s`)
   }
