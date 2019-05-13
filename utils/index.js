@@ -57,9 +57,10 @@ function isSort(arrs,sortRule){
   return true
 }
 
+
 module.exports = {
   randomArray,
   sortRule,
   testSortTime,
-  orderlyArray
+  orderlyArray,
 }
