@@ -1,14 +1,19 @@
 
 
 const quickSortDerive = require('../src/test1')
-const {randomArray} = require('../utils')
+const quickSort = require('../src/quick-sort')
+const {randomArray, testSortTime} = require('../utils')
 
 
 let arrs = []
+let n = 10000000
 
-arrs = randomArray(5, 10, 1000000)
-console.log(arrs)
-quickSortDerive(arrs,2)
+arrs = randomArray(n, 10, n)
 
-for(let i = 0; i<arrs.length;i++)
-  console.log(arrs[i])
+let start = new Date().getTime()
+quickSortDerive(arrs,10)
+let end = new Date().getTime()
+console.log((end-start)/1000)
+
+arrs = randomArray(n, 10, n)
+testSortTime('quick sort', quickSort,arrs)

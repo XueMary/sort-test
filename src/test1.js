@@ -1,6 +1,5 @@
 
-const { sortRule } = require('../utils')
-const { insertSorts } = require('./insert-sort')
+
 
 function quickSort(arrs, number) {
   let len = arrs.length
@@ -10,13 +9,13 @@ function quickSort(arrs, number) {
 function _quickSort(arrs, l, r, number) {
 
   if (l>r) {
-    // insertSorts(arrs, l, r)
     return
   }
-  // console.log(lt,gt,4567)
+  
   let {lt, gt} = _partition(arrs, l, r)
   
   if(lt==number||gt==number||(lt<number&&gt>number)){
+    arrs = arrs.splice(0, number)
     return
   }
 
