@@ -20,9 +20,9 @@ function heapSort2(arrs) {
     head.data[i+1] = arrs[i]
   }
   head._count = len
-  let i = Math.floor(len/2)
+  let i = Math.floor(len/2) // 去除叶子节点
   for (; i >= 1; i--) {
-    head._shiftDown(i)
+    head._shiftDown(i) // 父级与子级比对，排成堆
   }
   for (let i = len - 1; i >= 0; i--) {
     arrs[i] = head.shiftMax()
