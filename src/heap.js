@@ -15,7 +15,7 @@ class Heap {
 
   insert(value) {
 
-    this.data.push(value)
+    this.data[this._count+1] = value
     this._count++
     this._shiftUp(this._count)
   }
@@ -23,7 +23,6 @@ class Heap {
   shiftMax() {
     const first = this.data[1]
     this.data[1] = this.data[this._count]
-    this.data.pop()
     this._count--
 
     this._shiftDown(1)
