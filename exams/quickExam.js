@@ -24,13 +24,11 @@ let n = 1000000
 
 
 arrs = randomArray(n, 10, n)
-testSortTime("quick sort", quickSort, arrs, (a,b)=>{
-  return a.value>b.value
-})
+testSortTime("quick sort", quickSort, arrs)
 
 arrs = randomArray(n, 10, n)
 let star  = new Date().getTime()
-arrs.sort((a,b)=>a.value>b.value)
+arrs.sort()
 let end  = new Date().getTime()
 console.log((end-star)/ 1000)
 
