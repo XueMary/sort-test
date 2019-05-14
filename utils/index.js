@@ -11,9 +11,8 @@ function randomArray(len, min, max) {
   let arrs = []
 
   for (let i = 0; i < len; i++) {
-    const random = (Math.random() * (max - min)).toFixed(2) + min
-    // console.log(parseFloat(random))
-    arrs.push(random)
+    const random = (Math.random() * (max - min)) + min
+    arrs.push(Number(random))
   }
 
   return arrs;
