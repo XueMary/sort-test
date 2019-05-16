@@ -48,13 +48,13 @@ class IndexHeap {
       if (currentPoint <= 1) {
         return
       }
-      let parentPoint = Math.floor(point / 2) // 父级位置
+      let parentPoint = Math.floor(currentPoint / 2) // 父级位置
       let parentIndex = this.indexData[parentPoint] // 父级 index
       let parentValue = this.valueData[parentIndex] // 父级 value
 
       let currentIndex = this.indexData[currentPoint]
       let currentValue = this.valueData[currentIndex]
-
+      
       if (currentValue > parentValue) {
         // 交换index data
         [this.indexData[currentPoint], this.indexData[parentPoint]] = [this.indexData[parentPoint], this.indexData[currentPoint]]
@@ -73,31 +73,31 @@ class IndexHeap {
     let currentPoint = point
 
     while (true) {
-      if(currentPoint>=this._count){
+      if(currentPoint>this._count){
         return
       }
 
-      let onePoint = point * 2
+      let onePoint = currentPoint * 2
       let oneIndex = this.indexData[onePoint]
       let oneValue = onePoint <= this._count ? this.valueData[oneIndex] : 0
 
-      let twoPoint = point * 2 + 1
+      let twoPoint = currentPoint * 2 + 1
       let twoIndex = this.indexData[twoPoint]
       let twoValue = twoPoint <= this._count ? this.valueData[twoIndex] : 0
 
       let currentValue = this.valueData[this.indexData[currentPoint]]
-      
       if (oneValue > twoValue && oneValue > currentValue) {
         [this.indexData[onePoint], this.indexData[currentPoint]] = [this.indexData[currentPoint], this.indexData[onePoint]]
         currentPoint = onePoint
       }
       else if (oneValue < twoValue && twoValue > currentValue) {
-        [this.indexData[twoValue], this.indexData[currentPoint]] = [this.indexData[currentPoint], this.indexData[twoValue]]
+        [this.indexData[twoPoint], this.indexData[currentPoint]] = [this.indexData[currentPoint], this.indexData[twoPoint]]
         currentPoint = twoPoint
       }
       else {
         return
       }
+      
       
     }
 
